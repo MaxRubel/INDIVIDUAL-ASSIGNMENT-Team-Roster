@@ -10,11 +10,20 @@ export default function TeamView() {
     getUserPlayers(user.uid).then((data) => {
       setPlayers(data);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2%' }}>
-      {players.map((player) => <PlayerCard key={player.id} playerObj={player} />)}
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '2%',
+      }}
+    >
+      {players.map((player) => (
+        <PlayerCard key={player.id} playerObj={player} />
+      ))}
     </div>
   );
 }
