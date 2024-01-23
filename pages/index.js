@@ -1,5 +1,4 @@
-import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+import PlayerForm from '../components/forms/PlayerForm';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
@@ -13,13 +12,11 @@ function Home() {
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
+        color: 'white',
+        caretColor: 'transparent',
       }}
     >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+      waddup
     </div>
   );
 }
