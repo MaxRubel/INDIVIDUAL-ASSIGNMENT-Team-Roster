@@ -1,23 +1,19 @@
 import TeamView from '../components/TeamView';
 import React from 'react';
 import PropTypes from 'prop-types';
-
-function Home({ searchInput }) {
+export default function TeamPage({ searchInput }) {
   return (
-    <div>
+    <>
       <h1 style={{ color: 'white', caretColor: 'transparent' }}>Teams</h1>
-      <TeamView searchInput={searchInput} />
-    </div>
+      <TeamView searchInput={searchInput} />;
+    </>
   );
 }
-
-export default Home;
-
-Home.propTypes = {
+TeamPage.propTypes = {
   searchInput: PropTypes.string,
 };
 
 // Set default props for PlayerForm
-Home.defaultProps = {
+TeamPage.defaultProps = {
   searchInput: '',
 };
