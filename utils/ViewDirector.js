@@ -3,9 +3,18 @@ import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
 import NavBar from '../components/NavBar';
+import React, { useState } from 'react';
 
-const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) => {
+const ViewDirectorBasedOnUserAuthStatus = ({
+  component: Component,
+  pageProps,
+}) => {
   const { user, userLoading } = useAuth();
+  const [searchInput, setSearchInput] = useState('');
+
+  const changeSearchInput = (value) => {
+    setSearchInput(value);
+  };
 
   // if user state is null, then show loader
   if (userLoading) {
@@ -16,9 +25,10 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
   if (user) {
     return (
       <>
-        <NavBar /> {/* NavBar only visible if user is logged in and is in every view */}
-        <div className="container">
-          <Component {...pageProps} />
+        <NavBar changeSearchInput={changeSearchInput} />{' '}
+        {/* NavBar only visible if user is logged in and is in every view */}
+        <div className='container'>
+          <Component {...pageProps} searchInput={searchInput} />
         </div>
       </>
     );

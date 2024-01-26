@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getSinglePlayer } from '../../../api/players';
 import PlayerForm from '../../../components/forms/PlayerForm';
+import React from 'react';
 
 export default function EditPlayer() {
   const [player, setPlayer] = useState({});
@@ -11,8 +12,7 @@ export default function EditPlayer() {
     getSinglePlayer(firebaseKey).then((data) => {
       setPlayer(data);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (<PlayerForm playerObj={player} />);
+  return <PlayerForm playerObj={player} />;
 }

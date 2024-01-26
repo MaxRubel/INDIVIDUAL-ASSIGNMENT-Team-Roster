@@ -70,3 +70,21 @@ export const deletePlayer = (firebaseKey) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+
+export const getPlayersOfteam = (teamId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/players.json?orderBy="teamId"&equalTo="${teamId}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
